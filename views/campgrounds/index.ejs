@@ -1,0 +1,37 @@
+<% layout('layouts/boilerplate') %>
+<div id="map" class="cluster-map"></div>
+<h1>All Campgrounds</h1>
+<div id="pageinate"></div>
+
+<div class="btn-toolbar justify-content-end mb-3" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group me-2" role="group" aria-label="First group">
+    <button class="btn btn-primary" type="button" data-bs-target="#pageNavigation" data-bs-slide="prev"><span aria-hidden="true">&laquo;</span></button>
+  </div>
+  <div id="pageNavigation" class="carousel">
+    <div class="carousel-inner">
+      <% for(let i=1; i<=Math.ceil(campgrounds.length/150); i++) { %>
+        <div class="btn-group me-2 pagination carousel-item m-0 p-0 <%= i === 1 ? 'active' : '' %>" id="pages" role="group" aria-label="Second group">
+        <button class="pageN btn btn-primary d-inline" id="p<%= (i*3)-2 %>" href="#"><%= (i*3)-2 %></button>
+        <% if(((i*3)-1) <= Math.floor(campgrounds.length/50)) { %>
+        <button class="pageN btn btn-primary d-inline" id="p<%= (i*3)-1 %>" href="#"><%= (i*3)-1 %></button>
+        <% } %>
+        <% if((i*3) <= Math.floor(campgrounds.length/50)) { %>
+        <button class="pageN btn btn-primary d-inline" id="p<%= (i*3) %>" href="#"><%= (i*3) %></button>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <div class="btn-group" role="group" aria-label="Third group">
+    <button class="btn btn-primary" type="button" data-bs-target="#pageNavigation" data-bs-slide="next" ><span aria-hidden="true">&raquo;</span></button>
+  </div>
+</div>
+    <script>
+        const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+        const campgrounds = { features: <%- JSON.stringify(campgrounds) %> };
+        const rawCampData = <%- JSON.stringify(campgrounds) %>;
+    </script>
+    <script src="/scripts/clusterMap.js"></script>
+    <script src="/scripts/paginateIndex.js"></script>
+
+    

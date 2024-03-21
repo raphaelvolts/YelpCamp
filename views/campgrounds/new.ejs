@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">New Campground</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/campgrounds" method="POST" class="validate-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]" required>
+                    <div class="invalid-feedback">
+                        Please enter a Title/ Name for the Campground!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                    <div class="invalid-feedback">
+                        Please enter a Location for the Campground!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="images">Select Images</label>
+                    <!--<input class="form-control" type="text" id="image" name="campground[image]" required>
+                    <div class="invalid-feedback">
+                        Please provide an Image URL for the Campground!
+                    </div>-->
+                    <input type="file" class="form-control" name="images" id="" accept="image/*" multiple>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Campground Price</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="text" class="form-control" placeholder="0.00" id="price" aria-label="price"
+                            aria-describedby="price-label" name="campground[price]" required>
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter the price/night for the Campground!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" rows="3" name="campground[description]"
+                        required></textarea>
+                    <div class="invalid-feedback">
+                        Please enter a short description for the Campground!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Add Campground</button>
+                    <a class="btn btn-primary" href="/campgrounds">Back to Index</a>
+                </div>
+            </form>
+        </div>
+    </div>
