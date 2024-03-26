@@ -1,2 +1,6 @@
 node_modules/
 .env
+Raphael_key
+Raphael_key.pub
+githubPublicKey
+githubPublicKey.pub
