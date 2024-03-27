@@ -50,7 +50,7 @@ for (let pageTab of pageTabs) {
     console.log(y);
     x = y - 50;
     console.log(x);
-    while (x < y) {
+    while (x < y && x < allCampgrounds.length) {
       makeDispCards(x);
       x++;
     }
