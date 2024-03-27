@@ -116,8 +116,8 @@ const makeDispCards = function (n) {
   anchor.append("View Campground");
 };
 
-while (i < j) {
+while (i < j && i < allCampgrounds.length) {
   makeDispCards(i);
-  i++;
+  ++i;
 }
 /* }); */
